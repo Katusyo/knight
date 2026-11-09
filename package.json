@@ -1,10 +1,12 @@
 {
   "name": "knight",
   "version": "1.0.0",
+  "type": "module",
   "description": "Knight Travails project for The Odin Project",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "NODE_OPTIONS=--experimental-vm-modules jest",
+    "test:watch": "NODE_OPTIONS=--experimental-vm-modules jest --watch"
   },
   "repository": {
     "type": "git",
@@ -13,7 +15,6 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "type": "module",
   "bugs": {
     "url": "https://github.com/Katusyo/knight/issues"
   },
@@ -21,7 +22,9 @@
   "devDependencies": {
     "html-loader": "^5.1.0",
     "html-webpack-plugin": "^5.6.8",
+    "jest": "^30.5.2",
     "webpack": "^5.112.2",
-    "webpack-cli": "^7.3.1"
+    "webpack-cli": "^7.3.1",
+    "webpack-dev-server": "^6.1.0"
   }
 }
