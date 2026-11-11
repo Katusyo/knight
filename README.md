@@ -59,6 +59,6 @@ The Jest suite (`tests/knight.test.js`) covers:
 - corner to corner (`[0, 0]` -> `[7, 7]`) in the minimum 6 moves
 - Errors thrown for off-board start and end positions
 
-  ## About
+## About
 
-  Built as part of The Odin Project's JavaScript course (Knight Travails project).
+Built as part of The Odin Project's JavaScript course (Knight Travails project).
