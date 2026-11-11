@@ -1,4 +1,4 @@
-import { describe, expect, test } from "@jest/globals";
+import { beforeEach, describe, expect, test } from "@jest/globals";
 import Knight from "../src/knight.js";
 
 describe(" Knight Travails Shortest Path Tests", () => {
@@ -53,7 +53,7 @@ describe(" Knight Travails Shortest Path Tests", () => {
         }
     });
 
-    test("shoul throw an error for an invalid starting postion", () => {
+    test("should throw an error for an invalid starting position", () => {
         expect(() => {
             knight.findShortestPath([9, 0], [7, 7]);
         }).toThrow("Invalid start or end position");
@@ -65,13 +65,13 @@ describe(" Knight Travails Shortest Path Tests", () => {
         }).toThrow("Invalid start or end position");
     });
 
-    test("should find the shortest path from a diffrent starting position", () => {
+    test("should find the shortest path from a different starting position", () => {
         const path = knight.findShortestPath([3, 3], [4, 5]);
 
         expect(path).toHaveLength(2);
         expect(path[0]).toEqual([3, 3]);
         expect(path[1]).toEqual([4, 5]);
-    })
+    });
 
 
 });
