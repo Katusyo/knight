@@ -41,4 +41,37 @@ describe(" Knight Travails Shortest Path Tests", () => {
         expect(path[0]).toEqual([0, 0]);
         expect(path[path.length - 1]).toEqual([7, 7]);
     });
+
+    test("every step in the path should be two squares in one direction and one square in the other", () => {
+        const path = knight.findShortestPath([0, 0], [7, 7]);
+        for (let i = 1; i < path.length; i++) {
+            const previous = path[i - 1];
+            const current = path[i];
+            const rowDifference = Math.abs(current[0] - previous[0]);
+            const colDifference = Math.abs(current[1] - previous[1]);
+            expect([[1, 2], [2, 1]]).toContainEqual([rowDifference, colDifference]);
+        }
+    });
+
+    test("shoul throw an error for an invalid starting postion", () => {
+        expect(() => {
+            knight.findShortestPath([9, 0], [7, 7]);
+        }).toThrow("Invalid start or end position");
+    })
+
+    test("should throw an error for an invalid ending position", () => {
+        expect(() => {
+            knight.findShortestPath([0, 0], [8, 7]);
+        }).toThrow("Invalid start or end position");
+    });
+
+    test("should find the shortest path from a diffrent starting position", () => {
+        const path = knight.findShortestPath([3, 3], [4, 5]);
+
+        expect(path).toHaveLength(2);
+        expect(path[0]).toEqual([3, 3]);
+        expect(path[1]).toEqual([4, 5]);
+    })
+
+
 });

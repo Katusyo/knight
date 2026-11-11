@@ -3,11 +3,16 @@ import ChessBoard from "./ChessBoard.js"
 class Knight {
 
     constructor() {
-
+        this.board = new ChessBoard();
     }
 
     findShortestPath(start, end) {
-        const board = new ChessBoard();
+        if (
+            !this.board.isValidPosition(start) ||
+            !this.board.isValidPosition(end)
+        ) {
+            throw new Error("Invalid start or end position");
+        }
 
         const queue = [{position: start, path: [start]}];
         const visited = new Set();
@@ -18,21 +23,19 @@ class Knight {
             const { position, path } = queue.shift();
 
             if (position[0] === end[0] && position[1] === end[1]) {
-                console.log(`You made it in ${path.length - 1} moves! Here's your path:`);
-                for (const step of path) {
-                    console.log(step);
-                }
                 return path;
             }
-
-            const nextMoves = board.getPossibleMoves(position);
+            const nextMoves = this.board.getPossibleMoves(position);
+            
             for (const move of nextMoves) {
                 if (!visited.has(move.toString())) {
                     visited.add(move.toString());
+
                     queue.push({ position: move, path: [...path, move] });
                 }
             }
         }
+        return null;
     }
 }
 
